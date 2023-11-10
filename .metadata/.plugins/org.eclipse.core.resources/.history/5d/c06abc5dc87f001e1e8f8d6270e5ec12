@@ -1,0 +1,9 @@
+package entities;
+
+public class Ativo {
+
+	private String name;
+	private String codigo
+	
+	
+}

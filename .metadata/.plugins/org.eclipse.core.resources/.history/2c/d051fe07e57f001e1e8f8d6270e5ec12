@@ -1,0 +1,12 @@
+package entities;
+
+public class Account {
+
+	private String holder;
+	private String password;
+	protected String accNumber;
+		
+	public Account() {
+	}
+	
+	

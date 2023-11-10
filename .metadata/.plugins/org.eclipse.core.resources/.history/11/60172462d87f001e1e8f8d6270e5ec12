@@ -1,0 +1,43 @@
+package application;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import entities.Account;
+
+public class Program {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		List<Account> acc = new ArrayList<>();
+		int i = 1;
+		do {
+			
+			System.out.println("=============================");
+			System.out.println("            Home             ");
+			System.out.println("=============================");
+			System.out.println("1 - Criar conta              ");
+			System.out.println("2 - Acessar conta            ");
+			System.out.println("0 - Sair                     ");
+			System.out.println("=============================");
+			int opt = sc.nextInt();
+			switch(opt) {
+			  case 1:
+			    // code block
+			    break;
+			  case 2:
+			    // code block
+			    break;
+			  default:
+			    // code block
+			}
+		}
+		while (i < 5);
+		
+		
+		
+		sc.close();
+	}
+
+}

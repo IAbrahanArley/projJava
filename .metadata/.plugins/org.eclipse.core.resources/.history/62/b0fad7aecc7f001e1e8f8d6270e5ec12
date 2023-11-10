@@ -1,0 +1,28 @@
+package application;
+
+import java.util.Scanner;
+
+public class Program {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int i = 0;
+		do {
+			
+			System.out.println("=============================");
+			System.out.println("            Home             ");
+			System.out.println("=============================");
+			System.out.println("1 - Criar conta              ");
+			System.out.println("2 - Acessar conta            ");
+			System.out.println("0 - Sair                     ");
+			System.out.println("=============================");
+		}
+		while (i < 5);
+		
+		
+		
+		sc.close();
+	}
+
+}
