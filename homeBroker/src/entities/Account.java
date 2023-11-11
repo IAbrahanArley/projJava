@@ -1,19 +1,23 @@
 package entities;
 
+import java.util.Objects;
+
 public class Account {
 
 	private String holder;
 	private String password;
 	private String accNumber;
+	private Double amount;
 		
 	public Account() {
 	}
 
-	public Account(String holder, String password, String accNumber) {
+	public Account(String holder, String password, String accNumber, Double amount) {
 		super();
 		this.holder = holder;
 		this.password = password;
 		this.accNumber = accNumber;
+		this.amount = amount;
 	}
 
 	public String getHolder() {
@@ -40,11 +44,51 @@ public class Account {
 		this.accNumber = accNumber;
 	}
 	
+	
+	
+	public Double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+
 	public void showData() {
 		System.out.println("Dados cadastrado: ");
 		System.out.println("Holder: " + holder);
 		System.out.println("Numero da conta: " + accNumber);
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(accNumber, password);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Account other = (Account) obj;
+		return Objects.equals(accNumber, other.accNumber) && Objects.equals(password, other.password);
+	}
+	
+	public double deposit(double value) {
+		return amount += value;
+	}
+	
+	public double withdraw(double value) {
+		return amount -= value;	
+	}
+	
+	public void showBalance() {
+		System.out.println("Saldo atual: " + amount);
+	}
+	
 	
 }	
 	

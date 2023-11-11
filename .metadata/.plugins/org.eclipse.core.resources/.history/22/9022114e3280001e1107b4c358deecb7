@@ -1,0 +1,27 @@
+package config;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import entities.Acao;
+import entities.Bdr;
+
+public class TestConfig {
+	
+	Acao acao1 = new Acao("petrobras", "petr4", 34.50, "pn");
+	Acao acao2 = new Acao("vale", "vale3", 71.50, "pn");
+	Acao acao3 = new Acao("mrv engenharia", "mve3", 10.12, "On");
+	Acao acao4 = new Acao("taesa", "taee11", 36.90, "unit");
+	
+	Bdr bdr1 = new Bdr("Unit Software inc", "u2st34", 6.21);
+	Bdr bdr2 = new Bdr("Unit Software inc", "u2st34", 6.21);
+	Bdr bdr3 = new Bdr("Unit Software inc", "u2st34", 6.21);
+	Bdr bdr4 = new Bdr("Unit Software inc", "u2st34", 6.21);
+	
+	
+	List<Acao> listAcao = Arrays.asList(acao1, acao2, acao3, acao4);
+	
+	
+	
+}

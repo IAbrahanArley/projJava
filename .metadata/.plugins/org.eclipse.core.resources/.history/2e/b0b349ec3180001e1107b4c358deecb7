@@ -1,0 +1,12 @@
+package entities;
+
+public class Fii extends Ativo{
+	public Fii(String name, String cod, Double price, Double dy) {
+		super(name, cod, price);
+		this.dy = dy;
+	}
+
+	private Double dy;
+	
+	
+}

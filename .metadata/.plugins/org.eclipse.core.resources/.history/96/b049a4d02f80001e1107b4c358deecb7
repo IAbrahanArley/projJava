@@ -1,0 +1,7 @@
+package config;
+
+import entities.Acao;
+
+public class TestConfig {
+	Acao acao = new Acao("petrobras", "petr4", 34.50, "On");
+}
