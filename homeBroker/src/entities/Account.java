@@ -1,7 +1,5 @@
 package entities;
 
-import java.util.Objects;
-
 public class Account {
 
 	private String holder;
@@ -50,32 +48,18 @@ public class Account {
 		return amount;
 	}
 
-	public void setAmount(Double amount) {
-		this.amount = amount;
-	}
 
+	// metodo para exibir dados do cadastro
+	
 	public void showData() {
 		System.out.println("Dados cadastrado: ");
 		System.out.println("Holder: " + holder);
 		System.out.println("Numero da conta: " + accNumber);
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(accNumber, password);
-	}
+	
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Account other = (Account) obj;
-		return Objects.equals(accNumber, other.accNumber) && Objects.equals(password, other.password);
-	}
+	// metodos para deposito, saque e extrato respeqctivamente ↓↓↓↓↓↓↓↓↓
 	
 	public double deposit(double value) {
 		return amount += value;
@@ -89,6 +73,8 @@ public class Account {
 		System.out.println("Saldo atual: " + amount);
 	}
 	
-	
-}	
-	
+	// metodo para compra do ativo
+	public Double buy(double totalValue) {
+		return amount -= totalValue;
+	}
+}

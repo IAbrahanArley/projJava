@@ -1,6 +1,6 @@
 package entities;
 
-public class Fii extends Ativo{
+public class Fii extends Ativo implements Calculo{
 	
 	private Double dy;
 	
@@ -15,6 +15,12 @@ public class Fii extends Ativo{
 
 	public void setDy(Double dy) {
 		this.dy = dy;
+	}
+
+	@Override
+	public double calcularRendimento(double dy, double atvValue, int quant) {
+		
+		return (atvValue * ((dy / 100)) * quant) / 12;
 	}
 
 	

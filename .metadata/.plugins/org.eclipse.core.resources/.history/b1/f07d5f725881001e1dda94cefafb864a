@@ -1,0 +1,67 @@
+package entities;
+
+public class Ativo {
+
+	private String name;
+	private String cod;
+	private Double price;
+
+	public Ativo( ) {
+		
+	}
+	
+	public Ativo(String name, String cod, Double price) {
+		this.name = name;
+		this.cod = cod;
+		this.price = price;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getcod() {
+		return cod;
+	}
+
+	public void setcod(String cod) {
+		this.cod = cod;
+	}
+
+	public Double getprice() {
+		return price;
+	}
+
+	public void setprice(Double price) {
+		this.price = price;
+	}
+
+	// metodo sobre escrito para exibir ativos disponiveis
+	@Override
+	public String toString() {
+		return "=========================== " + "\nAtivo nome:" + name + "\nCodigo:" + cod + "\nValor:" + price;
+	}
+
+	// metodo para validar compra o ativo
+	public Double buy(double quant) {
+		Account acc = new Account();
+		double total = this.price + quant;
+		double test = acc.getAmount();
+		if ( total <= acc.getAmount()) {
+			test -= total;
+			System.out.println("Compra efetuada com sucesso!");
+			System.out.println("Saldo atual: ");
+			return test;
+		}else {
+			System.out.println("Saldo insuficinte, faça um deposito");
+			System.out.println("Saldo atual: ");
+			return test;
+		}
+		
+	}
+
+}

@@ -5,6 +5,10 @@ public class Ativo {
 	private String name;
 	private String cod;
 	private Double price;
+
+	public Ativo( ) {
+		
+	}
 	
 	public Ativo(String name, String cod, Double price) {
 		this.name = name;
@@ -35,8 +39,13 @@ public class Ativo {
 	public void setprice(Double price) {
 		this.price = price;
 	}
+
+	// metodo sobre escrito para exibir ativos disponiveis
+	@Override
+	public String toString() {
+		return "=========================== " + "\nAtivo nome:" + name + "\nCodigo:" + cod + "\nValor:" + price;
+	}
+
 	
-	
-	
-	
+
 }
