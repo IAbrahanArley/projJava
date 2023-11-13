@@ -7,8 +7,8 @@ public class Acao extends Ativo{
 		
 	}
 	
-	public Acao(String name, String cod, Double price, String type) {
-		super(name, cod, price);
+	public Acao(String name, String cod, Double price, Integer quant, String type) {
+		super(name, cod, price, quant);
 		this.type = type;
 	}
 

@@ -4,8 +4,8 @@ public class Fii extends Ativo implements Calculo{
 	
 	private Double dy;
 	
-	public Fii(String name, String cod, Double price, Double dy) {
-		super(name, cod, price);
+	public Fii(String name, String cod, Double price, Integer quant, Double dy) {
+		super(name, cod, price, quant);
 		this.dy = dy;
 	}
 

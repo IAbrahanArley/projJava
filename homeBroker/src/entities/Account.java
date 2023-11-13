@@ -1,12 +1,15 @@
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Account {
 
 	private String holder;
 	private String password;
 	private String accNumber;
 	private Double amount;
-		
+	private List<Ativo> ativos = new ArrayList<>();	
 	public Account() {
 	}
 
@@ -48,6 +51,9 @@ public class Account {
 		return amount;
 	}
 
+	public List<Ativo> getAtivos() {
+		return ativos;
+	}
 
 	// metodo para exibir dados do cadastro
 	
@@ -74,7 +80,12 @@ public class Account {
 	}
 	
 	// metodo para compra do ativo
-	public Double buy(double totalValue) {
-		return amount -= totalValue;
+	public Ativo buy(double totalValue, String name, String cod, Double price, Integer quant) {
+		Ativo ativo = new Ativo (name, cod, price, quant);
+		ativos.add(ativo);
+		amount -= totalValue;
+		return ativo;
 	}
+
+	
 }

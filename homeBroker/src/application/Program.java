@@ -8,6 +8,7 @@ import java.util.Scanner;
 import config.TestConfig;
 import entities.Acao;
 import entities.Account;
+import entities.Ativo;
 import entities.Bdr;
 import entities.Fii;
 
@@ -77,7 +78,8 @@ public class Program {
 									+ "2 - Sacar            \n" 
 									+ "3 - Saldo \n"
 									+ "4 - Comprar ativo \n" 
-									+ "5 - Vender ativo \n" 
+									+ "5 - Vender ativo \n"
+									+ "6 - Meus ativos \n" 
 									+ "0 - Sair                     \n"
 									+ "=============================\n");
 							key = sc.nextInt();
@@ -133,7 +135,7 @@ public class Program {
 													if ( account.getAmount() >= total) {
 														double totalValue = conf.getprice() * quant;
 														System.out.println("Compra efetuada com sucesso!");
-														account.buy(totalValue);
+														System.out.println(account.buy(totalValue, conf.getName(), conf.getcod(), conf.getprice(), quant));
 														System.out.println("Saldo atual: " + account.getAmount());
 													} else {
 														System.out.println("Saldo insuficinte, faça um deposito");
@@ -161,7 +163,7 @@ public class Program {
 													if ( account.getAmount() >= total) {
 														double totalValue = conf.getprice() * quant;
 														System.out.println("Compra efetuada com sucesso!");
-														account.buy(totalValue);
+														account.buy(totalValue, conf.getName(), conf.getcod(), conf.getprice(), quant);
 														System.out.println("Saldo atual: " + account.getAmount());
 													} else {
 														System.out.println("Saldo insuficinte, faça um deposito");
@@ -188,7 +190,7 @@ public class Program {
 													if ( account.getAmount() >= total) {
 														double totalValue = conf.getprice() * quant;
 														System.out.println("Compra efetuada com sucesso!");
-														account.buy(totalValue);
+														account.buy(totalValue, conf.getName(), conf.getcod(), conf.getprice(), quant);
 														
 														System.out.println("Rendimento recebido no valor de: " + conf.calcularRendimento(conf.getDy(), conf.getprice(), quant)); 
 														account.deposit(conf.calcularRendimento(conf.getDy(), conf.getprice(), quant));
@@ -200,6 +202,7 @@ public class Program {
 												} 
 											}
 											break;
+										
 										case 0:
 											
 											break;
@@ -221,7 +224,30 @@ public class Program {
 										compra = sc.nextInt();
 										switch (compra) {
 										case 1:
-											
+											System.out.println("" 
+													+ "=============================\n" 
+													+ "         Suas ações  \n ");
+											config.acao();
+											System.out.println("Digite o codigo da ação:");
+											sc.nextLine();
+											String cod = sc.nextLine();
+											List<Acao> listAcao = config.listAcao();
+											for (Acao conf : listAcao ) {
+												if (conf.getcod().equals(cod)) {
+													System.out.println("Digite a quantidade:");
+													int quant = sc.nextInt();
+													double total = conf.getprice() * quant;
+													if ( account.getAmount() >= total) {
+														double totalValue = conf.getprice() * quant;
+														System.out.println("Compra efetuada com sucesso!");
+														
+														System.out.println("Saldo atual: " + account.getAmount());
+													} else {
+														System.out.println("Saldo insuficinte, faça um deposito");
+														System.out.println("Saldo atual: " + account.getAmount());
+													}
+												} 
+											}
 											break;
 
 										case 2:
@@ -238,6 +264,14 @@ public class Program {
 											break;
 										}
 								break;
+							case 6:
+								List<Ativo> meuAtivo = new ArrayList<>();
+								meuAtivo = account.getAtivos(); 
+								for (Ativo ativo : meuAtivo) {
+									System.out.println(ativo);
+									
+								}
+								break;	
 							case 0:
 								key = 0;
 								break;
