@@ -214,23 +214,66 @@ public class Program {
 							case 5:
 								System.out.println("" 
 										+ "=============================\n" 
-										+ "         Seus ativos  \n ");
-								// listando acoes em carteira
-								List<Ativo> meuAtivo = new ArrayList<>();
-								meuAtivo = account.getAtivos(); 
-								for (Ativo ativo : meuAtivo) {
-									System.out.println(ativo);
-									
-								}
-								System.out.println("Digite o codigo da ação:");
-								sc.nextLine();
-								String cod = sc.nextLine();
-								System.out.println("Digite a quantidade:");
-								int quant = sc.nextInt();
-								account.shell(cod, quant);
+										+ "    O que deseja vender? "
+										+ "=============================\n"
+										+ "1 - Ações              \n"
+										+ "2 - Bdr            \n" 
+										+ "3 - Fii \n"
+										+ "0 - Sair                     \n"
+										+ "=============================\n");
+										compra = sc.nextInt();
+										switch (compra) {
+										case 1:
+											System.out.println("" 
+													+ "=============================\n" 
+													+ "         Suas ações  \n ");
+											// listando acoes em carteira
+											List<Ativo> meuAtivo = new ArrayList<>();
+											meuAtivo = account.getAtivos(); 
+											for (Ativo ativo : meuAtivo) {
+												System.out.println(ativo);
+												
+											}
+											System.out.println("Digite o codigo da ação:");
+											sc.nextLine();
+											String cod = sc.nextLine();
+											
+											for (Ativo conf : meuAtivo ) {
+												if (conf.getcod().equals(cod)) {
+													System.out.println("Digite a quantidade:");
+													int quant = sc.nextInt();
+													
+													if (quant < conf.getQuant() ) {
+														// se a quantidade vendida for menor que a da carteira tenho que deixar o restante
+														int dif = conf.getQuant() - quant;
+														conf.setQuant(dif);
+														
+													} else if( quant == conf.getQuant()) {
+														// se a quantidade vendida for igual a da carteira tenho que remover o ativo
+														
+													} else {
+														// se a quantidade vendida for maior que a carteira tenho que dizer ao usuario que valor vendido excede ao possuido 
+													}
+												} 
+											}
+											break;
+
+										case 2:
+											
+											break;
+										case 3:
+											
+											break;
+										case 0:
+											
+											break;
+
+										default:
+											break;
+										}
 								break;
 							case 6:
-								meuAtivo = new ArrayList<>();
+								List<Ativo> meuAtivo = new ArrayList<>();
 								meuAtivo = account.getAtivos(); 
 								for (Ativo ativo : meuAtivo) {
 									System.out.println(ativo);

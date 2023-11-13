@@ -214,23 +214,58 @@ public class Program {
 							case 5:
 								System.out.println("" 
 										+ "=============================\n" 
-										+ "         Seus ativos  \n ");
-								// listando acoes em carteira
-								List<Ativo> meuAtivo = new ArrayList<>();
-								meuAtivo = account.getAtivos(); 
-								for (Ativo ativo : meuAtivo) {
-									System.out.println(ativo);
-									
-								}
-								System.out.println("Digite o codigo da ação:");
-								sc.nextLine();
-								String cod = sc.nextLine();
-								System.out.println("Digite a quantidade:");
-								int quant = sc.nextInt();
-								account.shell(cod, quant);
+										+ "    O que deseja vender? "
+										+ "=============================\n"
+										+ "1 - Ações              \n"
+										+ "2 - Bdr            \n" 
+										+ "3 - Fii \n"
+										+ "0 - Sair                     \n"
+										+ "=============================\n");
+										compra = sc.nextInt();
+										switch (compra) {
+										case 1:
+											System.out.println("" 
+													+ "=============================\n" 
+													+ "         Suas ações  \n ");
+											config.acao();
+											System.out.println("Digite o codigo da ação:");
+											sc.nextLine();
+											String cod = sc.nextLine();
+											List<Acao> listAcao = config.listAcao();
+											for (Acao conf : listAcao ) {
+												if (conf.getcod().equals(cod)) {
+													System.out.println("Digite a quantidade:");
+													int quant = sc.nextInt();
+													double total = conf.getprice() * quant;
+													if ( account.getAmount() >= total) {
+														double totalValue = conf.getprice() * quant;
+														System.out.println("Compra efetuada com sucesso!");
+														
+														System.out.println("Saldo atual: " + account.getAmount());
+													} else {
+														System.out.println("Saldo insuficinte, faça um deposito");
+														System.out.println("Saldo atual: " + account.getAmount());
+													}
+												} 
+											}
+											break;
+
+										case 2:
+											
+											break;
+										case 3:
+											
+											break;
+										case 0:
+											
+											break;
+
+										default:
+											break;
+										}
 								break;
 							case 6:
-								meuAtivo = new ArrayList<>();
+								List<Ativo> meuAtivo = new ArrayList<>();
 								meuAtivo = account.getAtivos(); 
 								for (Ativo ativo : meuAtivo) {
 									System.out.println(ativo);

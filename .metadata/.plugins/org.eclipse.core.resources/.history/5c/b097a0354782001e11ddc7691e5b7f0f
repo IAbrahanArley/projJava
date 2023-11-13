@@ -89,14 +89,11 @@ public class Account {
 	// metodo para venda do ativo
 		public Ativo shell(String cod, int quant) {
 			List<Ativo> meuAtivo = new ArrayList<>();
-		
 			meuAtivo = getAtivos(); 
-			
-			Ativo test = new Ativo();
 			int count = 0;
 			for (Ativo conf : meuAtivo ) {
+				count++;
 				
-				test = conf;
 				if (conf.getcod().equals(cod)) {
 					
 					if (quant < conf.getQuant() ) {
@@ -104,24 +101,17 @@ public class Account {
 						int dif = conf.getQuant() - quant;
 						conf.setQuant(dif);
 						amount = amount + (conf.getprice() * quant);
-						System.out.println("Venda concluida com sucesso!");
-						return test;
 					} else if( quant == conf.getQuant()) {
 						// se a quantidade vendida for igual a da carteira tenho que remover o ativo
 						meuAtivo.remove(count);
 						amount = amount + (conf.getprice() * quant);
-						System.out.println("Venda concluida com sucesso!");
-						return test;
 					} else {
 						// se a quantidade vendida for maior que a carteira tenho que dizer ao usuario que valor vendido excede ao possuido 
-						
 						System.out.println("Quantidade inserida excede a quantidade da carteira");
 					}
 				} 
-				count++;
 			}
-			return null;
-
+			return conf;
 		}
 
 	
